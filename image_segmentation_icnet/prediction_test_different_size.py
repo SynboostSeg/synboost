@@ -154,13 +154,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='PyTorch \
                 Segmentation Crop Prediction')
     parser.add_argument('--input_dir', type=str,
-                        default="/home/lxt/data/Cityscapes/leftImg8bit/test",
+                        default="/kaggle/input/light-data/original",
                         help='training dataset folder (default: \
                               $(HOME)/data)')
     parser.add_argument("--input_disp_dir", type=str, default=None)
-    parser.add_argument('--output_dir', type=str, default="/home/giancarlo/Desktop/temp2",
+    parser.add_argument('--output_dir', type=str, default="/kaggle/working/results",
                         help='output directory of the model_test, for saving the seg_models')
-    parser.add_argument("--resume", type=str, default="/home/lxt/Desktop/Seg_model_ZOO/CNL_net_4w_ohem/CS_scenes_40000.pth")
+    parser.add_argument("--resume", type=str, default="/kaggle/input/segmentation-icnet/icnet_final.pth")
     parser.add_argument("--start",type=int,default=0,help="start index of crop test")
     parser.add_argument("--end",type=int,default=5000,help="end index of crop test")
     parser.add_argument("--gpu",type=str,default="0",help="which gpu to use")
