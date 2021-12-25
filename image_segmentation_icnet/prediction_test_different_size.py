@@ -164,7 +164,7 @@ if __name__ == '__main__':
     parser.add_argument("--start",type=int,default=0,help="start index of crop test")
     parser.add_argument("--end",type=int,default=5000,help="end index of crop test")
     parser.add_argument("--gpu",type=str,default="0",help="which gpu to use")
-    parser.add_argument("--arch",type=str,default=icnet, help="which network are used")
+    parser.add_argument("--arch",type=str,default="icnet", help="which network are used")
     parser.add_argument("--size",type=float,default=1.0,help="ratio of the input images")
     parser.add_argument("--rgb",type=int,default=0)
     args = parser.parse_args()
