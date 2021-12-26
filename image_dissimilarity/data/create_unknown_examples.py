@@ -187,10 +187,10 @@ def create_known_examples(instance_path, semantic_path, original_path, save_dir)
 
 
 if __name__ == '__main__':
-    instance_path = '/home/giancarlo/data/innosuisse/cityscapes/train/instances'
-    semantic_path = '/home/giancarlo/data/innosuisse/cityscapes/train/semantic'
-    original_path = '/home/giancarlo/data/innosuisse/cityscapes/train/original'
-    save_dir = '/home/giancarlo/data/innosuisse/optimized_only'
+    instance_path = '/kaggle/input/unknown-dataset/unknown_dataset/instances'
+    semantic_path = '/kaggle/input/unknown-dataset/unknown_dataset/labels'
+    original_path = '/kaggle/input/synboostwo-data-generator/final_dataset/cityscapes_processed/original'
+    save_dir = '/kaggle/working/results'
     
     create_unknown_examples(instance_path, semantic_path, original_path, save_dir, visualize=False)
     #create_known_examples(instance_path, semantic_path, original_path, save_dir)
