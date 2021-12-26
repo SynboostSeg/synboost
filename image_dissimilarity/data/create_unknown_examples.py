@@ -29,8 +29,8 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
     if not os.path.isdir(os.path.join(save_dir, 'semantic')):
         os.mkdir(os.path.join(save_dir, 'semantic'))
 
-    if not os.path.isdir(os.path.join(save_dir, 'original')):
-        os.mkdir(os.path.join(save_dir, 'original'))
+    #if not os.path.isdir(os.path.join(save_dir, 'original')):
+       # os.mkdir(os.path.join(save_dir, 'original'))
 
     # for creating synthesis later
     if not os.path.exists(os.path.join(save_dir, 'temp')):
@@ -131,7 +131,7 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
 
             # save images
             mask_img.save(os.path.join(save_dir, 'labels', new_label_name))
-            original_img.save(os.path.join(save_dir, 'original', new_original_name))
+            #original_img.save(os.path.join(save_dir, 'original', new_original_name))
             new_semantic_img.save(os.path.join(save_dir, 'semantic_labelId', new_semantic_name))
             new_semantic_train_img.save(os.path.join(save_dir, 'semantic', new_semantic_train_name))
 
