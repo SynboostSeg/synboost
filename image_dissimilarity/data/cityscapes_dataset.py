@@ -25,13 +25,13 @@ class CityscapesDataset(Dataset):
     def __init__(self, dataroot, preprocess_mode, crop_size=512, aspect_ratio= 0.5, flip=False, normalize=False,
                  prior = False, only_valid = False, roi = False, light_data= False, void = False, num_semantic_classes = 19, is_train = True):
 
-        self.original_paths = [os.path.join(dataroot, 'original', image)
-                               for image in os.listdir(os.path.join(dataroot, 'original'))]
+        self.original_paths = [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image)
+                               for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')]
         if light_data:
-            self.semantic_paths = [os.path.join(dataroot, 'semantic_icnet', image)
-                                   for image in os.listdir(os.path.join(dataroot, 'semantic_icnet'))]
-            self.synthesis_paths = [os.path.join(dataroot, 'synthesis_spade', image)
-                                    for image in os.listdir(os.path.join(dataroot, 'synthesis_spade'))]
+            #self.semantic_paths = [os.path.join(dataroot, 'semantic_icnet', image)
+             #                      for image in os.listdir(os.path.join(dataroot, 'semantic_icnet'))]
+            self.synthesis_paths = [os.path.join('/kaggle/input/synthesis-spade/synthesis_spade', image)
+                                    for image in os.listdir('/kaggle/input/synthesis-spade/synthesis_spade')]
         else:
             self.semantic_paths = [os.path.join(dataroot, 'semantic', image)
                                    for image in os.listdir(os.path.join(dataroot, 'semantic'))]
@@ -44,15 +44,15 @@ class CityscapesDataset(Dataset):
             self.label_paths = [os.path.join(dataroot, 'labels_with_void_no_ego', image)
                                 for image in os.listdir(os.path.join(dataroot, 'labels_with_void_no_ego'))]
         else:
-            self.label_paths = [os.path.join(dataroot, 'labels', image)
-                                for image in os.listdir(os.path.join(dataroot, 'labels'))]
+            #self.label_paths = [os.path.join(dataroot, 'labels', image)
+             #                   for image in os.listdir(os.path.join(dataroot, 'labels'))]
         if prior:
             if light_data:
-                self.mae_features_paths = [os.path.join(dataroot, 'mae_features_spade', image)
-                                           for image in os.listdir(os.path.join(dataroot, 'mae_features_spade'))]
-                self.entropy_paths = [os.path.join(dataroot, 'entropy_icnet', image)
-                                      for image in os.listdir(os.path.join(dataroot, 'entropy_icnet'))]
-                self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance_icnet', image)
+                #self.mae_features_paths = [os.path.join(dataroot, 'mae_features_spade', image)
+                 #                          for image in os.listdir(os.path.join(dataroot, 'mae_features_spade'))]
+                #self.entropy_paths = [os.path.join(dataroot, 'entropy_icnet', image)
+                 #                     for image in os.listdir(os.path.join(dataroot, 'entropy_icnet'))]
+                #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance_icnet', image)
                                              for image in os.listdir(os.path.join(dataroot, 'logit_distance_icnet'))]
             else:
                 self.mae_features_paths = [os.path.join(dataroot, 'mae_features', image)
@@ -64,13 +64,13 @@ class CityscapesDataset(Dataset):
         
         # We need to sort the images to ensure all the pairs match with each other
         self.original_paths = natsorted(self.original_paths)
-        self.semantic_paths = natsorted(self.semantic_paths)
+        #self.semantic_paths = natsorted(self.semantic_paths)
         self.synthesis_paths = natsorted(self.synthesis_paths)
-        self.label_paths = natsorted(self.label_paths)
+        #self.label_paths = natsorted(self.label_paths)
         if prior:
-            self.mae_features_paths = natsorted(self.mae_features_paths)
-            self.entropy_paths = natsorted(self.entropy_paths)
-            self.logit_distance_paths = natsorted(self.logit_distance_paths)
+            #self.mae_features_paths = natsorted(self.mae_features_paths)
+            #self.entropy_paths = natsorted(self.entropy_paths)
+            #self.logit_distance_paths = natsorted(self.logit_distance_paths)
         
         if only_valid: # Only for Lost and Found
             self.original_paths = np.delete(self.original_paths, INVALID_LABELED_FRAMES)
@@ -78,8 +78,8 @@ class CityscapesDataset(Dataset):
             self.synthesis_paths = np.delete(self.label_paths, INVALID_LABELED_FRAMES)
             self.label_paths = np.delete(self.label_paths, INVALID_LABELED_FRAMES)
                
-        assert len(self.original_paths) == len(self.semantic_paths) == len(self.synthesis_paths) \
-               == len(self.label_paths), \
+        #assert len(self.original_paths) == len(self.semantic_paths) == len(self.synthesis_paths) \
+              # == len(self.label_paths), \
             "Number of images in the dataset does not match with each other"
         "The #images in %s and %s do not match. Is there something wrong?"
         
