@@ -24,7 +24,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
     gpu = int(gpu_ids)
     
     # get data_loaders
-    cfg_test_loader = config['test_dataloader']
+    cfg_test_loader = config['train_dataloader']
     cfg_test_loader['dataset_args']['dataroot'] = dataroot
     test_loader = trainer_util.get_dataloader(cfg_test_loader['dataset_args'], cfg_test_loader['dataloader_args'])
     
