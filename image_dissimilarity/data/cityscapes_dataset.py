@@ -62,11 +62,7 @@ class CityscapesDataset(Dataset):
     def __getitem__(self, index):
         
         # get and open all images
-        label_path = self.label_paths[index]
-        label = Image.open(label_path)
-
-        semantic_path = self.semantic_paths[index]
-        semantic = Image.open(semantic_path)
+        
 
         image_path = self.original_paths[index]
         image = Image.open(image_path).convert('RGB')
@@ -74,15 +70,9 @@ class CityscapesDataset(Dataset):
         syn_image_path = self.synthesis_paths[index]
         syn_image = Image.open(syn_image_path).convert('RGB')
         
-        if self.prior:
-            mae_path = self.mae_features_paths[index]
-            mae_image = Image.open(mae_path)
+        
     
-            entropy_path = self.entropy_paths[index]
-            entropy_image = Image.open(entropy_path)
-    
-            distance_path = self.logit_distance_paths[index]
-            distance_image = Image.open(distance_path)
+           
 
         # get input for transformations
         w = self.crop_size
@@ -91,30 +81,21 @@ class CityscapesDataset(Dataset):
         
         if self.flip:
             flip_ran = random.random() > 0.5
-            label = _flip(label, flip_ran)
-            semantic = _flip(semantic, flip_ran)
+            
+            
             image = _flip(image, flip_ran)
             syn_image = _flip(syn_image, flip_ran)
-            if self.prior:
-                mae_image = _flip(mae_image, flip_ran)
-                entropy_image = _flip(entropy_image, flip_ran)
-                distance_image = _flip(distance_image, flip_ran)
+            
 
         # get augmentations
         base_transforms, augmentations = get_transform(image_size, self.preprocess_mode)
 
         # apply base transformations
-        label_tensor = base_transforms(label)*255
-        semantic_tensor = base_transforms(semantic)*255
+        
+        
         syn_image_tensor = base_transforms(syn_image)
-        if self.prior:
-            mae_tensor = base_transforms(mae_image)
-            entropy_tensor = base_transforms(entropy_image)
-            distance_tensor = base_transforms(distance_image)
-        else:
-            mae_tensor = []
-            entropy_tensor = []
-            distance_tensor = []
+        
+        
 
         if self.is_train and self.preprocess_mode != 'none':
             image_tensor = augmentations(image)
@@ -126,22 +107,16 @@ class CityscapesDataset(Dataset):
             syn_image_tensor = norm_transform(syn_image_tensor)
             image_tensor = norm_transform(image_tensor)
             
-        # post processing for semantic labels
-        if self.num_semantic_classes == 19:
-            semantic_tensor[semantic_tensor == 255] = self.num_semantic_classes + 1  # 'ignore label is 20'
-        semantic_tensor = one_hot_encoding(semantic_tensor, self.num_semantic_classes + 1)
 
-        input_dict = {'label': label_tensor,
+        input_dict = {
                       'original': image_tensor,
-                      'semantic': semantic_tensor,
+                      
                       'synthesis': syn_image_tensor,
                       'label_path': label_path,
                       'original_path': image_path,
-                      'semantic_path': semantic_path,
+                      
                       'syn_image_path': syn_image_path,
-                      'entropy': entropy_tensor,
-                      'mae': mae_tensor,
-                      'distance': distance_tensor
+                      
                       }
 
         return input_dict
