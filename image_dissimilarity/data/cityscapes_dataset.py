@@ -112,7 +112,7 @@ class CityscapesDataset(Dataset):
                       'original': image_tensor,
                       
                       'synthesis': syn_image_tensor,
-                      'label_path': label_path,
+                      
                       'original_path': image_path,
                       
                       'syn_image_path': syn_image_path,
