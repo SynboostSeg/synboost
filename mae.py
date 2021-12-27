@@ -10,7 +10,7 @@ from util import trainer_util, metrics
 
 def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
     
-    soft_fdr = os.path.join(/kaggle/working/results, 'mae_features_' + data_origin)
+    soft_fdr = os.path.join('/kaggle/working/results', 'mae_features_' + data_origin)
     
     if not os.path.exists(soft_fdr):
         os.makedirs(soft_fdr)
