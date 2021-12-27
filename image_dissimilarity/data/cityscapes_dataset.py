@@ -60,7 +60,7 @@ class CityscapesDataset(Dataset):
                 #self.entropy_paths = [os.path.join(dataroot, 'entropy', image)
                  #                     for image in os.listdir(os.path.join(dataroot, 'entropy'))]
                 #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance', image)
-                                             for image in os.listdir(os.path.join(dataroot, 'logit_distance'))]
+                                            # for image in os.listdir(os.path.join(dataroot, 'logit_distance'))]
         
         # We need to sort the images to ensure all the pairs match with each other
         self.original_paths = natsorted(self.original_paths)
