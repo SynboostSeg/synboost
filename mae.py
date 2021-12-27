@@ -108,7 +108,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
 if __name__ == '__main__':
     # input parameters
     config_file_path = 'image_dissimilarity/configs/train/default_configuration.yaml'
-    gpu_ids = '1'
+    gpu_ids = '0'
     dataroot = '/home/giancarlo/data/innosuisse/custom_both'
     data_origin = 'spade'
     mae_features(config_file_path, gpu_ids, dataroot, data_origin)
