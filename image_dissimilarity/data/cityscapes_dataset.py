@@ -23,7 +23,7 @@ INVALID_LABELED_FRAMES = [17,  37,  55,  72,  91, 110, 129, 153, 174, 197, 218, 
 class CityscapesDataset(Dataset):
     
     def __init__(self, dataroot, preprocess_mode, crop_size=512, aspect_ratio= 0.5, flip=False, normalize=False,
-                 prior = False, only_valid = False, roi = False, light_data= False, void = False, num_semantic_classes = 19, is_train = True):
+                 prior = True, only_valid = False, roi = False, light_data= True, void = False, num_semantic_classes = 19, is_train = True):
 
         self.original_paths = [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image)
                                for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')]
@@ -46,7 +46,7 @@ class CityscapesDataset(Dataset):
         else:
             #self.label_paths = [os.path.join(dataroot, 'labels', image)
              #                   for image in os.listdir(os.path.join(dataroot, 'labels'))]
-        if prior:
+       # if prior:
             if light_data:
                 #self.mae_features_paths = [os.path.join(dataroot, 'mae_features_spade', image)
                  #                          for image in os.listdir(os.path.join(dataroot, 'mae_features_spade'))]
