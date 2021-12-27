@@ -25,13 +25,28 @@ class CityscapesDataset(Dataset):
     def __init__(self, dataroot, preprocess_mode, crop_size=512, aspect_ratio= 0.5, flip=False, normalize=False,
                  prior = True, only_valid = False, roi = False, light_data= True, void = False, num_semantic_classes = 19, is_train = True):
 
-        self.original_paths = [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image)
-                               for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')]
-        print(len(self.original_paths))
-        self.synthesis_paths = [os.path.join('/kaggle/input/synthesis-spade/synthesis_spade', image)
-                                    for image in os.listdir('/kaggle/input/synthesis-spade/synthesis_spade')
-        self.original_paths = natsorted( [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image) for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')])
+        self.original_paths = [os.path.join(dataroot, 'original', image)
+                               for image in os.listdir(os.path.join(dataroot, 'original'))]
+        if light_data:
+       
+            self.synthesis_paths = [os.path.join(dataroot, 'synthesis_spade', image)
+                                    for image in os.listdir(os.path.join(dataroot, 'synthesis_spade'))]
+        else:
+            self.semantic_paths = [os.path.join(dataroot, 'semantic', image)
+                                   for image in os.listdir(os.path.join(dataroot, 'semantic'))]
+            self.synthesis_paths = [os.path.join(dataroot, 'synthesis', image)
+                                    for image in os.listdir(os.path.join(dataroot, 'synthesis'))]
+        
+        
+        
+        # We need to sort the images to ensure all the pairs match with each other
+        self.original_paths = natsorted(self.original_paths)
+        
         self.synthesis_paths = natsorted(self.synthesis_paths)
+        
+        
+               
+        
         self.dataset_size = len(self.original_paths)
         self.preprocess_mode = preprocess_mode
         self.crop_size = crop_size
@@ -222,4 +237,3 @@ if __name__ == '__main__':
     }
     
     test(dataset_args, dataloader_args, save_imgs=True)
-
