@@ -27,6 +27,7 @@ class CityscapesDataset(Dataset):
 
         self.original_paths = [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image)
                                for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')]
+        print(len(self.original_paths))
         self.synthesis_paths = [os.path.join('/kaggle/input/synthesis-spade/synthesis_spade', image)
                                     for image in os.listdir('/kaggle/input/synthesis-spade/synthesis_spade')
         self.original_paths = natsorted(self.original_paths)
