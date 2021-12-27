@@ -47,19 +47,19 @@ class CityscapesDataset(Dataset):
             #self.label_paths = [os.path.join(dataroot, 'labels', image)
              #                   for image in os.listdir(os.path.join(dataroot, 'labels'))]
        # if prior:
-            if light_data:
+           # if light_data:
                 #self.mae_features_paths = [os.path.join(dataroot, 'mae_features_spade', image)
                  #                          for image in os.listdir(os.path.join(dataroot, 'mae_features_spade'))]
                 #self.entropy_paths = [os.path.join(dataroot, 'entropy_icnet', image)
                  #                     for image in os.listdir(os.path.join(dataroot, 'entropy_icnet'))]
                 #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance_icnet', image)
-                                             for image in os.listdir(os.path.join(dataroot, 'logit_distance_icnet'))]
-            else:
-                self.mae_features_paths = [os.path.join(dataroot, 'mae_features', image)
-                                           for image in os.listdir(os.path.join(dataroot, 'mae_features'))]
-                self.entropy_paths = [os.path.join(dataroot, 'entropy', image)
-                                      for image in os.listdir(os.path.join(dataroot, 'entropy'))]
-                self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance', image)
+                                             #for image in os.listdir(os.path.join(dataroot, 'logit_distance_icnet'))]
+            #else:
+                #self.mae_features_paths = [os.path.join(dataroot, 'mae_features', image)
+                 #                          for image in os.listdir(os.path.join(dataroot, 'mae_features'))]
+                #self.entropy_paths = [os.path.join(dataroot, 'entropy', image)
+                 #                     for image in os.listdir(os.path.join(dataroot, 'entropy'))]
+                #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance', image)
                                              for image in os.listdir(os.path.join(dataroot, 'logit_distance'))]
         
         # We need to sort the images to ensure all the pairs match with each other
