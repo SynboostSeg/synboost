@@ -304,9 +304,9 @@ if __name__ == '__main__':
     #save_dir = '/home/giandbt/Documents/data/master_thesis/dissimilarity_model/epfl_clean/train/labels_ignore'
     #update_labels_to_ignore_void(semantic_path, labels_path, save_dir)
     
-    semantic_folder = '/home/giancarlo/data/innosuisse/custom_both/semantic'
-    semantic_pred_folder = '/home/giancarlo/data/innosuisse/custom_both/semantic_label_ids_icnet'
-    save_dir = '/home/giancarlo/data/innosuisse/custom_both/semantic_labelsId_original'
+    semantic_folder = '/kaggle/input/semantic-icnet/results/semantic'
+    semantic_pred_folder = '/kaggle/input/icnet-segmentation-output/results/semantic_label_ids_icnet'
+    save_dir = '/kaggle/working/results'
     change_trainIds_to_labelIds(semantic_folder, save_dir, semantic_pred_folder)
 
 
