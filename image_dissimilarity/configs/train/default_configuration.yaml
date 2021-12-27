@@ -9,7 +9,7 @@ training_strategy:
   niter_decay: 0 # of iter to linearly decay learning rate to zero
   is_train: True
   class_weight: True
-  class_weight_cityscapes: True
+  class_weight_cityscapes: False
   image_visualization: False
 
 # model options
@@ -58,7 +58,7 @@ train_dataloader:
     flip: True
     normalize: True
     void: False
-    light_data: False
+    light_data: True
     num_semantic_classes: 19
     is_train: True
   dataloader_args:
@@ -88,7 +88,7 @@ test_dataloader1:
     aspect_ratio: 2
     flip: False
     normalize: True
-    light_data: False
+    light_data: True
     roi: False
     num_semantic_classes: 19
     is_train: False
