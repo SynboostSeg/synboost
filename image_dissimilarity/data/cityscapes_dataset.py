@@ -27,62 +27,10 @@ class CityscapesDataset(Dataset):
 
         self.original_paths = [os.path.join('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original', image)
                                for image in os.listdir('/kaggle/input/cityscapes-synboost/final_dataset/cityscapes_processed/original')]
-        if light_data:
-            #self.semantic_paths = [os.path.join(dataroot, 'semantic_icnet', image)
-             #                      for image in os.listdir(os.path.join(dataroot, 'semantic_icnet'))]
-            self.synthesis_paths = [os.path.join('/kaggle/input/synthesis-spade/synthesis_spade', image)
-                                    for image in os.listdir('/kaggle/input/synthesis-spade/synthesis_spade')]
-        else:
-            self.semantic_paths = [os.path.join(dataroot, 'semantic', image)
-                                   for image in os.listdir(os.path.join(dataroot, 'semantic'))]
-            self.synthesis_paths = [os.path.join(dataroot, 'synthesis', image)
-                                    for image in os.listdir(os.path.join(dataroot, 'synthesis'))]
-        if roi:
-            self.label_paths = [os.path.join(dataroot, 'labels_with_ROI', image)
-                                for image in os.listdir(os.path.join(dataroot, 'labels_with_ROI'))]
-        elif void:
-            self.label_paths = [os.path.join(dataroot, 'labels_with_void_no_ego', image)
-                                for image in os.listdir(os.path.join(dataroot, 'labels_with_void_no_ego'))]
-        else:
-            #self.label_paths = [os.path.join(dataroot, 'labels', image)
-             #                   for image in os.listdir(os.path.join(dataroot, 'labels'))]
-       # if prior:
-           # if light_data:
-                #self.mae_features_paths = [os.path.join(dataroot, 'mae_features_spade', image)
-                 #                          for image in os.listdir(os.path.join(dataroot, 'mae_features_spade'))]
-                #self.entropy_paths = [os.path.join(dataroot, 'entropy_icnet', image)
-                 #                     for image in os.listdir(os.path.join(dataroot, 'entropy_icnet'))]
-                #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance_icnet', image)
-                                             #for image in os.listdir(os.path.join(dataroot, 'logit_distance_icnet'))]
-            #else:
-                #self.mae_features_paths = [os.path.join(dataroot, 'mae_features', image)
-                 #                          for image in os.listdir(os.path.join(dataroot, 'mae_features'))]
-                #self.entropy_paths = [os.path.join(dataroot, 'entropy', image)
-                 #                     for image in os.listdir(os.path.join(dataroot, 'entropy'))]
-                #self.logit_distance_paths = [os.path.join(dataroot, 'logit_distance', image)
-                                            # for image in os.listdir(os.path.join(dataroot, 'logit_distance'))]
-        
-        # We need to sort the images to ensure all the pairs match with each other
+        self.synthesis_paths = [os.path.join('/kaggle/input/synthesis-spade/synthesis_spade', image)
+                                    for image in os.listdir('/kaggle/input/synthesis-spade/synthesis_spade')
         self.original_paths = natsorted(self.original_paths)
-        #self.semantic_paths = natsorted(self.semantic_paths)
         self.synthesis_paths = natsorted(self.synthesis_paths)
-        #self.label_paths = natsorted(self.label_paths)
-        if prior:
-            #self.mae_features_paths = natsorted(self.mae_features_paths)
-            #self.entropy_paths = natsorted(self.entropy_paths)
-            #self.logit_distance_paths = natsorted(self.logit_distance_paths)
-        
-        if only_valid: # Only for Lost and Found
-            self.original_paths = np.delete(self.original_paths, INVALID_LABELED_FRAMES)
-            self.semantic_paths = np.delete(self.semantic_paths, INVALID_LABELED_FRAMES)
-            self.synthesis_paths = np.delete(self.label_paths, INVALID_LABELED_FRAMES)
-            self.label_paths = np.delete(self.label_paths, INVALID_LABELED_FRAMES)
-               
-        #assert len(self.original_paths) == len(self.semantic_paths) == len(self.synthesis_paths) \
-              # == len(self.label_paths), \
-            "Number of images in the dataset does not match with each other"
-        "The #images in %s and %s do not match. Is there something wrong?"
-        
         self.dataset_size = len(self.original_paths)
         self.preprocess_mode = preprocess_mode
         self.crop_size = crop_size
