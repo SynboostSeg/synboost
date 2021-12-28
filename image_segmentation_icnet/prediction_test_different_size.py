@@ -154,7 +154,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='PyTorch \
                 Segmentation Crop Prediction')
     parser.add_argument('--input_dir', type=str,
-                        default="/kaggle/input/synboostwo-data-generator/final_dataset/cityscapes_processed/original",
+                        default="/kaggle/input/cityscapes-synboost/final_dataset/fs_lost_and_found/original",
                         help='training dataset folder (default: \
                               $(HOME)/data)')
     parser.add_argument("--input_disp_dir", type=str, default=None)
