@@ -33,8 +33,8 @@ def convert_gtCoarse_to_labels(data_path, save_dir):
         mask_img.save(os.path.join(save_dir, 'labels', semantic_name))
         
 def convert_semantic_to_trainids(semantic_path, save_dir):
-    if not os.path.isdir(os.path.join(save_dir, 'semantic')):
-        os.mkdir(os.path.join(save_dir, 'semantic'))
+    if not os.path.exists(os.path.join(save_dir, 'semantic')):
+        os.makedirs(os.path.join(save_dir, 'semantic'))
 
     semantic_paths = [os.path.join(semantic_path, image)
                       for image in os.listdir(semantic_path)]
