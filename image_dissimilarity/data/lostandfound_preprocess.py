@@ -16,7 +16,7 @@ def convert_gtCoarse_to_labels(data_path, save_dir):
         os.makedirs(os.path.join(save_dir, 'labels'))
 
     semantic_paths = [os.path.join(data_path, image)
-                      for image in os.listdir(data_path) if 'labelTrainIds' in image]
+                      for image in os.listdir(data_path)]
 
     semantic_paths = natsorted(semantic_paths)
 
@@ -61,7 +61,7 @@ def convert_gtCoarse_to_labels_ROI(data_path, save_dir):
         os.makedirs(os.path.join(save_dir, 'labels_with_ROI'))
 
     semantic_paths = [os.path.join(data_path, image)
-                      for image in os.listdir(data_path) if 'labelTrainIds' in image]
+                      for image in os.listdir(data_path)]
 
     semantic_paths = natsorted(semantic_paths)
 
@@ -84,7 +84,7 @@ def convert_gtCoarse_to_labels_ROI(data_path, save_dir):
 if __name__ == '__main__':
     data_path = '/kaggle/input/fs-lost-and-found-trainids/results/semantic'
     save_dir = '/kaggle/working/results'
-    convert_gtCoarse_to_labels(data_path, save_dir)
+    convert_gtCoarse_to_labels_ROI(data_path, save_dir)
 
     #semantic_path = '/media/giancarlo/Samsung_T5/master_thesis/data/lost_and_found/post-process/semantic_labelids'
     #convert_semantic_to_trainids(data_path, save_dir)
