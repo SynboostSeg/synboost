@@ -65,10 +65,10 @@ class CityscapesDataset(Dataset):
         
 
         image_path = self.original_paths[index]
-        image = Image.open(image_path).convert('RGB')
+        image = Image.open(image_path)
 
         syn_image_path = self.synthesis_paths[index]
-        syn_image = Image.open(syn_image_path).convert('RGB')
+        syn_image = Image.open(syn_image_path)
         
         
     
