@@ -12,8 +12,8 @@ trainid_to_name = cityscapes_labels.trainId2name
 id_to_trainid = cityscapes_labels.label2trainid
 
 def convert_gtCoarse_to_labels(data_path, save_dir):
-    if not os.path.isdir(os.path.join(save_dir, 'labels')):
-        os.mkdir(os.path.join(save_dir, 'labels'))
+    if not os.path.exists(os.path.join(save_dir, 'labels')):
+        os.makedirs(os.path.join(save_dir, 'labels'))
 
     semantic_paths = [os.path.join(data_path, image)
                       for image in os.listdir(data_path) if 'labelTrainIds' in image]
@@ -57,8 +57,8 @@ def convert_semantic_to_trainids(semantic_path, save_dir):
         semantic_img.save(os.path.join(save_dir, 'semantic', semantic_name))
         
 def convert_gtCoarse_to_labels_ROI(data_path, save_dir):
-    if not os.path.isdir(os.path.join(save_dir, 'labels_with_ROI')):
-        os.mkdir(os.path.join(save_dir, 'labels_with_ROI'))
+    if not os.path.exists(os.path.join(save_dir, 'labels_with_ROI')):
+        os.makedirs(os.path.join(save_dir, 'labels_with_ROI'))
 
     semantic_paths = [os.path.join(data_path, image)
                       for image in os.listdir(data_path) if 'labelTrainIds' in image]
@@ -82,9 +82,9 @@ def convert_gtCoarse_to_labels_ROI(data_path, save_dir):
 
 
 if __name__ == '__main__':
-    data_path = '/kaggle/input/lost-and-found-icnet-seg-output/results/semantic_label_ids_icnet'
+    data_path = '/kaggle/input/fs-lost-and-found-trainids/results/semantic'
     save_dir = '/kaggle/working/results'
-    #convert_gtCoarse_to_labels(data_path, save_dir)
+    convert_gtCoarse_to_labels(data_path, save_dir)
 
     #semantic_path = '/media/giancarlo/Samsung_T5/master_thesis/data/lost_and_found/post-process/semantic_labelids'
-    convert_semantic_to_trainids(data_path, save_dir)
+    #convert_semantic_to_trainids(data_path, save_dir)
