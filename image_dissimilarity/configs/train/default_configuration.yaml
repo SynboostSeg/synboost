@@ -62,7 +62,7 @@ train_dataloader:
     num_semantic_classes: 19
     is_train: True
   dataloader_args:
-    batch_size: 4
+    batch_size: 1
     num_workers: 2
     shuffle: True
 val_dataloader:
