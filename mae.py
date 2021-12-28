@@ -93,8 +93,8 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             img_2 = up2(feat2)
             img_1 = up1(feat1)
             
-            img_name = os.path.basename(data_i['original_path'][0])
-            combined = img_1
+            combined = weights[0] * img_1 + weights[1] * img_2 + weights[2] * img_3 + weights[3] * img_4 + weights[
+                4] * img_5
             min_v = torch.min(combined.squeeze())
             max_v = torch.max(combined.squeeze())
             combined = (combined.squeeze() - min_v) / (max_v - min_v)
@@ -102,59 +102,6 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             combined = to_pil(combined.cpu())
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
-            
-           # ------------------------------------------------------------------
-            
-            img_name = os.path.basename(data_i['original_path'][1])
-            combined = img_2
-            min_v = torch.min(combined.squeeze())
-            max_v = torch.max(combined.squeeze())
-            combined = (combined.squeeze() - min_v) / (max_v - min_v)
-    
-            combined = to_pil(combined.cpu())
-            pred_name = 'mea_' + img_name
-            combined.save(os.path.join(soft_fdr, pred_name))
-            
-           # --------------------------------------------------------------
-            
-            img_name = os.path.basename(data_i['original_path'][2])
-            combined = img_3
-            min_v = torch.min(combined.squeeze())
-            max_v = torch.max(combined.squeeze())
-            combined = (combined.squeeze() - min_v) / (max_v - min_v)
-    
-            combined = to_pil(combined.cpu())
-            pred_name = 'mea_' + img_name
-            combined.save(os.path.join(soft_fdr, pred_name))
-            
-           # ---------------------------------------------------------------------
-            
-            img_name = os.path.basename(data_i['original_path'][3])
-            combined = img_4
-            min_v = torch.min(combined.squeeze())
-            max_v = torch.max(combined.squeeze())
-            combined = (combined.squeeze() - min_v) / (max_v - min_v)
-    
-            combined = to_pil(combined.cpu())
-            pred_name = 'mea_' + img_name
-            combined.save(os.path.join(soft_fdr, pred_name))
-            
-           # -----------------------------------------------
-            
-            img_name = os.path.basename(data_i['original_path'][4])
-            combined = img_5
-            min_v = torch.min(combined.squeeze())
-            max_v = torch.max(combined.squeeze())
-            combined = (combined.squeeze() - min_v) / (max_v - min_v)
-    
-            combined = to_pil(combined.cpu())
-            pred_name = 'mea_' + img_name
-            combined.save(os.path.join(soft_fdr, pred_name))
-            
-           # -------------------------------------------------
-            
-            
-            
             
         
 if __name__ == '__main__':
