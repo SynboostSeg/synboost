@@ -33,10 +33,10 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
        # os.mkdir(os.path.join(save_dir, 'original'))
 
     # for creating synthesis later
-    if not os.path.exists(os.path.join(save_dir, 'temp')):
-        os.makedirs(os.path.join(save_dir, 'temp'))
-        os.makedirs(os.path.join(save_dir, 'temp', 'gtFine', 'val'))
-        os.makedirs(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val'))
+   # if not os.path.exists(os.path.join(save_dir, 'temp')):
+   #     os.makedirs(os.path.join(save_dir, 'temp'))
+    #    os.makedirs(os.path.join(save_dir, 'temp', 'gtFine', 'val'))
+     #   os.makedirs(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val'))
 
     semantic_paths = [os.path.join(semantic_path, image)
                            for image in os.listdir(semantic_path)]
@@ -136,11 +136,11 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
             new_semantic_train_img.save(os.path.join(save_dir, 'semantic', new_semantic_train_name))
 
             # save images for synthesis
-            original_img.save(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val', new_original_name))
-            new_semantic_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', new_semantic_name))
+          #  original_img.save(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val', new_original_name))
+          #  new_semantic_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', new_semantic_name))
 
-            instance_img = Image.open(instance)
-            instance_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', os.path.basename(instance)))
+          #  instance_img = Image.open(instance)
+          #  instance_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', os.path.basename(instance)))
 
 def create_known_examples(instance_path, semantic_path, original_path, save_dir):
 
