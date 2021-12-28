@@ -187,8 +187,8 @@ def create_known_examples(instance_path, semantic_path, original_path, save_dir)
 
 
 if __name__ == '__main__':
-    instance_path = '/kaggle/input/unknown-dataset/unknown_dataset/instances'
-    semantic_path = '/kaggle/input/unknown-dataset/unknown_dataset/labels'
+    instance_path = '/kaggle/input/unknown-for-known-icnet/unknown for icnet known/instances'
+    semantic_path = '/kaggle/input/unknown-for-known-icnet/unknown for icnet known/semantic'
     original_path = '/kaggle/input/synboostwo-data-generator/final_dataset/cityscapes_processed/original'
     save_dir = '/kaggle/working/results'
     
