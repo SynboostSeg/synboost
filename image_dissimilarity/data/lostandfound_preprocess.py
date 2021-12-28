@@ -82,9 +82,9 @@ def convert_gtCoarse_to_labels_ROI(data_path, save_dir):
 
 
 if __name__ == '__main__':
-    data_path = '/media/giancarlo/Samsung_T5/master_thesis/data/lost_and_found/post-process/L&F_TrainID_labels'
-    #save_dir = '/media/giancarlo/Samsung_T5/master_thesis/data/lost_and_found/post-process'
+    data_path = '/kaggle/input/lost-and-found-icnet-seg-output/results/semantic_label_ids_icnet'
+    save_dir = '/kaggle/working/results'
     #convert_gtCoarse_to_labels(data_path, save_dir)
 
     #semantic_path = '/media/giancarlo/Samsung_T5/master_thesis/data/lost_and_found/post-process/semantic_labelids'
-    #convert_semantic_to_trainids(semantic_path, save_dir)
+    convert_semantic_to_trainids(data_path, save_dir)
