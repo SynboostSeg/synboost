@@ -103,7 +103,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
             
-            ------------------------------------------------------------------
+           # ------------------------------------------------------------------
             
             img_name = os.path.basename(data_i['original_path'][1])
             combined = img_2
@@ -115,7 +115,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
             
-            --------------------------------------------------------------
+           # --------------------------------------------------------------
             
             img_name = os.path.basename(data_i['original_path'][2])
             combined = img_3
@@ -127,7 +127,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
             
-            ---------------------------------------------------------------------
+           # ---------------------------------------------------------------------
             
             img_name = os.path.basename(data_i['original_path'][3])
             combined = img_4
@@ -139,7 +139,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
             
-            -----------------------------------------------
+           # -----------------------------------------------
             
             img_name = os.path.basename(data_i['original_path'][4])
             combined = img_5
@@ -151,7 +151,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             pred_name = 'mea_' + img_name
             combined.save(os.path.join(soft_fdr, pred_name))
             
-            -------------------------------------------------
+           # -------------------------------------------------
             
             
             
