@@ -25,11 +25,11 @@ class CityscapesDataset(Dataset):
     def __init__(self, dataroot, preprocess_mode, crop_size=512, aspect_ratio= 0.5, flip=False, normalize=False,
                  prior = True, only_valid = False, roi = False, light_data= True, void = False, num_semantic_classes = 19, is_train = True):
         
-        dataroot = '/kaggle/input/cityscapes-synboost/final_dataset/fs_static/original'
+        dataroot = '/kaggle/input/cityscapes-synboost/final_dataset/fs_lost_and_found/original'
         self.original_paths = [os.path.join(dataroot, image)
                                for image in os.listdir(os.path.join(dataroot))]
         if light_data:
-            dataroot = '/kaggle/input/fs-static-synthesis/synboost/image_synthesis_spade/results/cityscapes_pretrained/test_latest/images/synthesized_image'
+            dataroot = '/kaggle/input/lost-and-found-synthesis-images/synboost/image_synthesis_spade/results/cityscapes_pretrained/test_latest/images/synthesized_image'
             self.synthesis_paths = [os.path.join(dataroot, image)
                                     for image in os.listdir(os.path.join(dataroot))]
         else:
