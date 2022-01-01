@@ -32,11 +32,11 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
     #if not os.path.isdir(os.path.join(save_dir, 'original')):
        # os.mkdir(os.path.join(save_dir, 'original'))
 
-    # for creating synthesis later
-   # if not os.path.exists(os.path.join(save_dir, 'temp')):
-   #     os.makedirs(os.path.join(save_dir, 'temp'))
-    #    os.makedirs(os.path.join(save_dir, 'temp', 'gtFine', 'val'))
-     #   os.makedirs(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val'))
+     for creating synthesis later
+    if not os.path.exists(os.path.join(save_dir, 'temp')):
+        os.makedirs(os.path.join(save_dir, 'temp'))
+        os.makedirs(os.path.join(save_dir, 'temp', 'gtFine', 'val'))
+        os.makedirs(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val'))
 
     semantic_paths = [os.path.join(semantic_path, image)
                            for image in os.listdir(semantic_path)]
@@ -56,7 +56,7 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
         instance_img = np.array(Image.open(instance))
         original_img = Image.open(original)
         
-        unique_classes = [sample for sample in np.unique(instance_img) if len(str(sample)) == 5]
+        unique_classes = [sample for sample in np.unique(instance_img) if (sample == 0 or sample == 1 or sample == 5 or sample == 4 or sample == 6) ]
 
         how_many = int(random.random()*len(unique_classes))
 
@@ -136,11 +136,11 @@ def create_unknown_examples(instance_path, semantic_path, original_path, save_di
             new_semantic_train_img.save(os.path.join(save_dir, 'semantic', new_semantic_train_name))
 
             # save images for synthesis
-          #  original_img.save(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val', new_original_name))
-          #  new_semantic_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', new_semantic_name))
+            original_img.save(os.path.join(save_dir, 'temp', 'leftImg8bit', 'val', new_original_name))
+            new_semantic_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', new_semantic_name))
 
-          #  instance_img = Image.open(instance)
-          #  instance_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', os.path.basename(instance)))
+            instance_img = Image.open(instance)
+            instance_img.save(os.path.join(save_dir, 'temp', 'gtFine', 'val', os.path.basename(instance)))
 
 def create_known_examples(instance_path, semantic_path, original_path, save_dir):
 
@@ -187,8 +187,8 @@ def create_known_examples(instance_path, semantic_path, original_path, save_dir)
 
 
 if __name__ == '__main__':
-    instance_path = '/kaggle/input/unknown-for-known-icnet/unknown for icnet known/instances'
-    semantic_path = '/kaggle/input/unknown-for-known-icnet/unknown for icnet known/semantic'
+    instance_path = '/kaggle/input/unknown-dataset/unknown_dataset/instances'
+    semantic_path = '/kaggle/input/unknown-dataset/unknown_dataset/labels'
     original_path = '/kaggle/input/synboostwo-data-generator/final_dataset/cityscapes_processed/original'
     save_dir = '/kaggle/working/results'
     
