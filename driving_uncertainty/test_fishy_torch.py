@@ -31,10 +31,12 @@ class AnomalyDetector():
         TestOptions = Config()
         self.opt = TestOptions
         torch.cuda.empty_cache()
+        print("Start")
         self.get_segmentation()
         self.get_synthesis()
         self.get_dissimilarity(ours)
         self.get_transformations()
+        print("check")
 
     # Loop around all figures
     def estimator_worker(self, image):
@@ -216,11 +218,11 @@ class AnomalyDetector():
 if __name__ == '__main__':
     import bdlb
     
+    detector = AnomalyDetector(True)
     # define fishyscapes test parameters
     fs = bdlb.load(benchmark="fishyscapes")
     # automatically downloads the dataset
     data = fs.get_dataset('Static')
-    detector = AnomalyDetector(True)
     metrics = fs.evaluate(detector.estimator_worker, data)
     
     print('My method achieved {:.2f}% AP'.format(100 * metrics['AP']))
