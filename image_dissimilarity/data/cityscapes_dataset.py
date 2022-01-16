@@ -29,7 +29,7 @@ class CityscapesDataset(Dataset):
         self.original_paths = [os.path.join(dataroot, image)
                                for image in os.listdir(os.path.join(dataroot))]
         if light_data:
-            dataroot = '/kaggle/input/original-seg-spade-synthesis/synboost/image_synthesis_spade/results/cityscapes_pretrained/test_latest/images/synthesized_image'
+            dataroot = '/kaggle/input/synthesized-images/synthesized_image'
             self.synthesis_paths = [os.path.join(dataroot, image)
                                     for image in os.listdir(os.path.join(dataroot))]
         else:
