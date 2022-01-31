@@ -22,6 +22,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
     # activate GPUs
     config['gpu_ids'] = gpu_ids
     gpu = int(gpu_ids)
+    print(gpu)
     
     # get data_loaders
     cfg_test_loader = config['train_dataloader']
