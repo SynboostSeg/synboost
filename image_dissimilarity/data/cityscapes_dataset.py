@@ -107,7 +107,7 @@ class CityscapesDataset(Dataset):
             syn_image_tensor = norm_transform(syn_image_tensor)
             image_tensor = norm_transform(image_tensor)
             
-
+        print(syn_image_tensor.shape)
         input_dict = {
                       'original': image_tensor,
                       
