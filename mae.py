@@ -79,7 +79,7 @@ def mae_features(config_file_path, gpu_ids, dataroot, data_origin):
             img_name = os.path.basename(data_i['original_path'][0])
             original = data_i['original'].cuda(gpu)
             synthesis = data_i['synthesis'].cuda(gpu)
-            
+            print(synthesis.shape)
             x_vgg, y_vgg = vgg(original), vgg(synthesis)
             feat5 = torch.mean(torch.abs(x_vgg[4] - y_vgg[4]), dim=1).unsqueeze(1)
             feat4 = torch.mean(torch.abs(x_vgg[3] - y_vgg[3]), dim=1).unsqueeze(1)
